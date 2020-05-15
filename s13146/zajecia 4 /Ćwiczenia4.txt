@@ -1,0 +1,249 @@
+ZAJECIA 4 
+ZAD 1 
+
+#include <iostream> 
+using namespace std; 
+
+int main() 
+{ 
+char zgoda;
+int suma=0;
+while (true) {
+	cout<< Czy chcesz wprowadzic nastepna liczbe ? <<endl;
+	cin>> zgoda; 
+if (zgoda == T ) 
+{ 
+int liczba; 
+cout<< Podaj liczbe” <<endl; 
+cin>> liczba;
+suma += liczba;
+cout<< Obecna suma wynosi: << suma <<endl; 
+}
+else  {
+break;
+} 
+return 0;
+}
+
+//g++ -Wall -ansi -pedantic -o zad_1 zad_1.cpp    ? kompiluje to w lini polecen  TYLKO ? d
+//						plik wynikowy/ pilk cpp
+ZAD 2
+
+#include <iostream> 
+using namespace std; 
+
+int main() 
+{ 
+char zgoda;
+int suma=0;
+while (true) {
+	cout<< Czy chcesz wprowadzic nastepna liczbe ? <<endl;
+	cin>> zgoda; 
+if (zgoda == T ) 
+{ 
+int liczba; 
+cout<< Podaj liczbe” <<endl; 
+cin>> liczba;
+suma += liczba;
+cout<< Obecna suma wynosi: << suma <<endl; 
+}
+else  {
+break;
+} 
+return suma;
+}
+
+echo $? //to jest to co było return 0
+
+ZAD 3 - choinka
+
+
+
+2 Rozdział 
+
+fopen -otwiera plik
+fclose - zamyka plik
+fscanf - odczytuje zawartosc pliku
+
+zad.1
+
+#include „functions.hpp”   //plik z funkcjami 
+using namespace std; 
+string parseInputData ( char* path){
+return string (path); 
+} 
+void verifyInputData (int argc, char** argv) { 
+	if (argc != 2) {
+	throw InputDataException();
+}
+} 
+
+ functions.hpp
+#include <string> 
+using namesake std; 
+class InputDataException {};  //pusta klasa 
+
+void verifyInputData (int, char**);  //definicja funkcji
+string pardeInputData (char*);
+
+
+#include <iostream>
+#include <fsteam>
+#include <string>
+#include <stdlib.h> 
+#include <list>
+#include ”functions.cpp”  //ten sam katalog import przez cudzyslowa 
+
+using namespace std; 
+bool getFileStream (const string&, ifsteam&);
+
+int main (int argc, char** argv);
+verifyInputData (argc, argh);  /.sprawdzamy czy 2 argumenty
+string pathToInputFile = parseInputData (argv[1]); //pobiermy science do pliku ktory otwieramy 
+cout<< „Loading file:..” << pathToInputFile<<endl;
+if stream fileStream;  //strumien wejsciowy 
+
+if(getFilesStream (pathToInputFile, filesStream)) { 
+string buffer; 
+getline (fileStream, buffer); //pobieramy linie
+int lines = atom (buffer.c_str()); //zamieniamy z chary na integer
+list <string> numbers   //tworzymy dynamiczna liste
+while (lines - - >0) {	// deinkrementacja na petli aby skonczy otczytywac linie
+	get line(fileStream.buffer);  // do zmiennej buffer
+	numbers.push_front(buffer);  //zapisanie do numbers
+}
+cout<< „Cloding file” <<endl; 
+fileStream.close();  //zamykamy plik
+for (list<string< :: const_iterator it = numbers.begin(); it !=numbers.end(); ++it) { 	cout<< *it <<endl; }  // mnozymy liczby przekazane 
+}
+else {  //gdy nie uda sie otwrzyc pliku
+cout<<„Cannot open file” <<endl; 
+}
+return 0;
+}
+bool getFilesStream (const string,pathToInputFile, ifsteam&, fileStream) {
+fileStream,opent{path.ToInputFile.c_str(), iOS::in);
+return FileStream.is_open(); // zwraca boolean gdy jest otwarty plik
+}
+ //g++ -Wall -ansi -pedantic -o ciao cigar.cpp
+W JEZYKU C:  #include <iostream>
+#include <fsteam>
+#include <string>
+#include <stdlib.h> 
+#include <list>
+#include ”functions.cpp”  //ten sam katalog import przez cudzyslowa 
+ 
+FILE* getFile(const string& pathToInputFile);  //otwieranie pliku 
+int main (int argc, char** argv){
+
+verifyInputData (argc, argh);  /.sprawdzamy czy 2 argumenty
+string pathToInputFile = parseInputData (argv[1]); //pobiermy science do pliku ktory otwieramy 
+cout<< „Loading file:..” << pathToInputFile<<endl;
+
+FILE* file- getFile(pathToInputFile); //zwracany i zapisywany wskaznik 
+if (file !=NULL) {
+	int lines=0;
+	fscan (file, „\d\f\n”, &lines); //przekazany adres & , file jest wskaźnikiem
+	list <int> numbers;
+
+while (lines - - > 0 ) {
+int number =0;
+fscan (file, „\d\fr’n| , &number);
+numbers.push_front (number); //zapisanie do listy
+}
+cout<<„closent file’’”<< pathToInputFile<< endl;
+fclose (file);  //zamkniecie pliku
+
+for (list <int>:: iterator it = numbers.begin(); it != numbers.end(); it++) { 
+	cout<< *it <<endl;
+}
+}
+else { //zmienna file bedzie nullem
+cout<< „Cannot open file” <<endl;
+return 1; 
+}
+return 0; 
+} 
+
+
+Zad 2 
+TRUDNE :O 
+
+WSKAŹNIKI 
+#include <iostream> 
+#include <list> 
+
+typedef int {*function) (int, int) ; //definicja typu 
+
+int max (int, int);
+int main (int, int);
+int sum (int, int); 
+
+int readFunctionIndex();
+int readStremElementCout ();
+list <int> readElements (int elementCout); 
+void processElements (list<int> &elemenst, function *functions, int functionId);
+									//nazwa typu 
+int main (int argc, char** argv) { 
+	function functions [] {max, min, sum};
+ 	int functionId = readFunctionIndex ();
+	int elementCount = readElements (elemenstCout);
+processElements (éléments, functions, functionId);
+return 0; 
+
+int max (int a, int b) { 
+	return (a<b ? b:a );
+} 
+int min (int a, int b) { 
+ 	return ( a>b ? b:a); 
+}
+int sum (int a, int b) {
+return a+b; 
+} 
+
+int readFunctionIndex90 { 
+int index=0;
+cin>> index;
+return index;
+}
+ 
+int readStreamElementCount () { 
+int count =0;
+cin>> count;
+return count; 
+}
+
+list <int> readElemenst (int elementCount) { 
+list <int> l; 
+for (int i=0; i< elementCount; i++) {
+int element =0;
+cin>> elementi
+l.push_back(element);
+} 
+return l; 
+} 
+void processElements (list <int> &elements, function *function, int functionId) { 
+list <int> ::iterator it = elements.end(); it++) {
+	v= function[ functionId] (v, *it);  //tablica funkcji 
+}
+cout<< v<<  endl; 
+}
+
+//  ./fpointers < inputDataMax10 
+// inputDataMax10 
+// ./fpointres< inputDataSum10  //= 45
+
+
+WSKAŹNIKI DO FUNKCJI ! 
+TYPEDEF - definicja nowego typu co nic nie zwraca 
+void (*myFunctionTypeName)(int a )
+nazwa typu z *  i argumenty 
+
+input 
+output
+cin cout 
+scanf 
+fclose 
+
+ifstream  -input przekierowani z odczyt
+ofstrem -output przekierownie do zapis 

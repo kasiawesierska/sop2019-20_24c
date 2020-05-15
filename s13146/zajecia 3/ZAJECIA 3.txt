@@ -1,0 +1,34 @@
+SKRYPT PETLE
+
+ZAD.1.
+
+#!/bin/bash
+if [ $# -gt 1 ]; then
+	echo $1
+else 
+	echo Nie podano parametru
+fi
+
+ZAD.2.
+
+#!/bin/bash
+currentDir=$(pwd)
+if [ -e $currentDir/config.cfg ]; then
+	$currentDir/config.cfg 
+elif [ $# -gt 0] && [ -e $currentDir/$1 ]; then
+	$currentDir/$1
+else 
+	echo Blad
+fi 
+
+ZAD.3
+
+filename=”$(basename $0)”
+name=”${filename##.*}”
+extension=”${filename##*.}”
+
+echo „Filename: ${filename}” 
+echo „Name: ${name}” 
+echo „Extension: ${extension}”
+
+
